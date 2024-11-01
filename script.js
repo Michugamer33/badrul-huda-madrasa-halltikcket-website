@@ -129,7 +129,9 @@ function updateTableContent() {
 function downloadPDF() {
     const element = document.getElementById('hallTicket');
     const options = {
-        scale: 2,
+        scale: 2, // Ensures higher resolution for better quality in PDF
+        width: 794, // A4 width in pixels (portrait)
+        height: 1123, // A4 height in pixels (portrait)
         useCORS: true,
     };
 
@@ -140,8 +142,11 @@ function downloadPDF() {
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
+        // Check if the name field exists before using it
+        const nameField = document.getElementById('name');
+        const fileName = nameField && nameField.value ? `${nameField.value}-hall-ticket.pdf` : 'hall-ticket.pdf';
+
         pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('hall-ticket.pdf');
+        pdf.save(fileName);
     });
 }
-
