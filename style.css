@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 210mm;
+    /* A4 width */
+    max-width: 100%;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+.title img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.details-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.student-info {
+    width: 60%;
+}
+
+.student-info label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.student-info input,
+.student-info select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.photo-box {
+    width: 36%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    position: relative;
+}
+
+#profileImage {
+    width: 170px;
+    /* Square size */
+    height: 170px;
+    object-fit: cover;
+    display: none;
+    border-radius: 8px;
+    /* Optional: add rounded corners */
+}
+
+#uploadButton {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.instructions {
+    margin-top: 20px;
+    border: 2px solid black;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.instructions-title {
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: black;
+    color: white;
+}
+
+/* Download button styling outside #hallTicket */
+#downloadButton {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}

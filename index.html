@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall Ticket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="container" id="hallTicket">
+        <div class="title">
+            <img src="logo.jpg" alt="Title Image"> <!-- Replace with the path to your title image -->
+        </div>
+
+        <div class="details-section">
+            <div class="student-info">
+                <label for="studentName">Name of Student:</label>
+                <input type="text" id="studentName" placeholder="Enter Name">
+
+                <label for="admissionNumber">Admission Number:</label>
+                <input type="text" id="admissionNumber" placeholder="Enter Admission Number">
+
+                <label for="classSelect">Class:</label>
+                <select id="classSelect" onchange="updateTableContent()">
+                    <option value="">Select Class</option>
+                    <option value="class1">Class 1</option>
+                    <option value="class2">Class 2</option>
+                    <option value="class3">Class 3</option>
+                    <option value="class4">Class 4</option>
+                    <option value="class5">Class 5</option>
+                    <option value="class6">Class 6</option>
+                    <option value="class7">Class 7</option>
+                    <option value="class8">Class 8</option>
+                    <option value="class9">Class 9</option>
+                    <option value="class10">Class 10</option>
+                    <option value="class+1">Class +1</option>
+                    <option value="class+2">Class +2</option>
+                </select>
+
+                <label for="studentDOB">Date of Birth:</label>
+                <input type="date" id="studentDOB">
+            </div>
+
+            <div class="photo-box" ondbclick="document.getElementById('uploadButton').click()">
+                <img id="profileImage" src="" alt="Profile Photo">
+                <input type="file" id="uploadButton" accept="image/*" onchange="displayImage(event)">
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Date</th>
+                    <th>Subject</th>
+                    <th>Sign of Invigilator</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td colspan="4">Select a class to view exam schedule</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="instructions">
+            <div class="instructions-title">INSTRUCTIONS</div>
+            <p>1 - Hall Ticket shall be produced in the examination hall failing which the candidate will not be allowed
+                to write the exam</p>
+            <p>2 - The student should carry only (i) Blue/Black ball point pen (ii) Hall ticket (iii) Exam board to the examination hall.</p>
+            <p>3 - Cell phones, any other electronic gadgets and small pieces of paper are strictly prohibited into the examination hall.</p>
+            <p>4 - Follow all other rules that the examination board announce on time</p>
+        </div>
+    </div>
+
+    <!-- Download button outside #hallTicket -->
+    <button id="downloadButton" onclick="downloadPDF()">Download Hall Ticket</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
