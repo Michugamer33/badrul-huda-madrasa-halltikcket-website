@@ -66,9 +66,9 @@ body {
 }
 
 #profileImage {
-    width: 170px;
+    width: 100px;
     /* Square size */
-    height: 170px;
+    height: 100px;
     object-fit: cover;
     display: none;
     border-radius: 8px;
