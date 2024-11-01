@@ -127,26 +127,11 @@ function updateTableContent() {
 }
 
 function downloadPDF() {
+    const { jsPDF } = window.jspdf;
     const element = document.getElementById('hallTicket');
-    const options = {
-        scale: 2, // Ensures higher resolution for better quality in PDF
-        width: 794, // A4 width in pixels (portrait)
-        height: 1123, // A4 height in pixels (portrait)
-        useCORS: true,
-    };
-
-    html2canvas(element, options).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF('p', 'pt', 'a4');
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-        // Check if the name field exists before using it
-        const nameField = document.getElementById('name');
-        const fileName = nameField && nameField.value ? `${nameField.value}-hall-ticket.pdf` : 'hall-ticket.pdf';
-
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save(fileName);
+    html2canvas(element).then(canvas => {
+        const pdf = new jsPDF('p', 'mm', 'a4'); // Use A4 size in millimeters
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297); // 210x297 mm for A4 size
+        pdf.save('hall-ticket.pdf');
     });
 }
